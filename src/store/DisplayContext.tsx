@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 interface DisplayContext {
   grouping: "status" | "user" | "priority";
@@ -7,7 +7,9 @@ interface DisplayContext {
   setOrdering: (ordering: "priority" | "title") => void;
 }
 
-const DisplayContext = createContext<DisplayContext | undefined>(undefined);
+export const DisplayContext = createContext<DisplayContext | undefined>(
+  undefined
+);
 
 export function DisplayProvider({ children }: { children: React.ReactNode }) {
   const [grouping, setGrouping] = useState<"status" | "user" | "priority">(
@@ -21,13 +23,4 @@ export function DisplayProvider({ children }: { children: React.ReactNode }) {
       {children}
     </DisplayContext.Provider>
   );
-}
-
-// eslint-disable-next-line react-refresh/only-export-components
-export function useDisplay() {
-  const context = useContext(DisplayContext);
-  if (!context) {
-    throw new Error("useDisplay must be used within a DisplayProvider. ");
-  }
-  return context;
 }

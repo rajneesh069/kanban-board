@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDisplay } from "../store/DisplayContext";
+import { useDisplay } from "../hooks/useDisplay";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -30,6 +30,7 @@ export default function NavBar() {
             minWidth: "100px",
             gap: 2,
             fontSize: 17,
+            cursor: "pointer",
           }}
           onClick={() => {
             setIsOpen(!isOpen);

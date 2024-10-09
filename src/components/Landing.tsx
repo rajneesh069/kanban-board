@@ -1,4 +1,8 @@
+import { useData } from "../hooks/useData";
+
 export default function Landing() {
+  const { data, isLoading } = useData();
+
   return (
     <div
       style={{

@@ -1,9 +1,9 @@
-interface CardProps {
+export interface CardProps {
   id: string;
   title: string;
   tag: string[];
   userId: string;
-  status: "In progress" | "Todo" | "Backlog";
+  status: "In progress" | "Todo" | "Backlog" | "Done" | "Canceled";
   priority: 0 | 1 | 2 | 3 | 4;
 }
 
