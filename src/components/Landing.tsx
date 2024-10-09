@@ -3,7 +3,6 @@ export default function Landing() {
     <div
       style={{
         height: "92vh",
-        backgroundColor: "#eee",
         display: "flex",
         flexDirection: "row",
       }}
