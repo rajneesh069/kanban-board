@@ -1,10 +1,13 @@
 import { useData } from "../hooks/useData";
 import { useDisplay } from "../hooks/useDisplay";
+import Grouping from "./Grouping";
 
 export default function Landing() {
   const { data, isLoading, error } = useData();
-  const { grouping, ordering } = useDisplay();
-  console.log(data);
+  const { grouping } = useDisplay();
+
+  console.log("data:", data);
+
   if (isLoading) {
     return <div>Loading....</div>;
   }
@@ -21,13 +24,7 @@ export default function Landing() {
         flexDirection: "row",
       }}
     >
-      <section></section>
-
-      <section></section>
-
-      <section></section>
-
-      <section></section>
+      <Grouping grouping={grouping} data={data} />
     </div>
   );
 }

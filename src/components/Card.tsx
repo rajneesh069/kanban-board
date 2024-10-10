@@ -10,12 +10,7 @@ export interface CardProps {
   priority: 0 | 1 | 2 | 3 | 4;
 }
 
-export default function Card({
-  id,
-  title,
-  tag,
-  priority,
-}: CardProps) {
+export default function Card({ id, title, tag, priority }: CardProps) {
   return (
     <div
       style={{
@@ -23,19 +18,24 @@ export default function Card({
         flexDirection: "column",
         gap: 2,
         border: "2px solid #eee",
-        borderRadius: "25px",
+        borderRadius: "8px",
         boxShadow: "inherit",
+        maxWidth: "320px",
+        padding: 6,
       }}
     >
       <div style={{ display: "flex", flexDirection: "row" }}>
         <p>{id}</p>
         <img src="" />
       </div>
-      <h4>{title}</h4>
+
+      <p style={{ fontFamily: "sans-serif" }}>{title}</p>
+
       <div style={{ display: "flex", flexDirection: "row", gap: 1 }}>
         <div>
           <Priority priority={priority} />
         </div>
+
         <div>
           {tag.map((el, idx) => (
             <Tag tag={el} key={idx} />

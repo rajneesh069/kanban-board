@@ -10,7 +10,6 @@ export default function NavBar() {
     <div
       style={{
         borderBottom: "2px solid grey",
-        width: "100%",
         display: "flex",
         padding: 5,
         position: "relative",
