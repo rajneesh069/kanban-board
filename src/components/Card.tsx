@@ -1,6 +1,7 @@
 import Priority from "./Priority";
 import Tag from "./Tag";
 import "../styles/Card.css";
+import { useData } from "../hooks/useData";
 
 export interface DataProps {
   id: string;
@@ -11,7 +12,7 @@ export interface DataProps {
   priority: 0 | 1 | 2 | 3 | 4;
 }
 
-type CardProps = { isUser?: boolean } & DataProps;
+type CardProps = { isUser: boolean } & DataProps;
 
 export default function Card({
   id,
@@ -20,7 +21,9 @@ export default function Card({
   priority,
   status,
   isUser,
+  userId,
 }: CardProps) {
+  const { data } = useData();
   return (
     <div className="card-container">
       <div
@@ -31,11 +34,24 @@ export default function Card({
         }}
       >
         <p style={{ color: "gray" }}>{id}</p>
-        {isUser && (
-          <img
-            style={{ borderRadius: "50%" }}
-            src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=50&h=50"
-          />
+        {!isUser && (
+          <div style={{ position: "relative" }}>
+            <img
+              src={`${
+                (data?.users.find((user) => user.id === userId)
+                  ?.available as boolean)
+                  ? `./assets/circle-16.ico`
+                  : `./assets/circle-128.ico`
+              }`}
+              height={10}
+              width={10}
+              style={{ position: "absolute", zIndex: 20, bottom: 4, right: 0 }}
+            />
+            <img
+              style={{ borderRadius: "50%" }}
+              src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=50&h=50"
+            />
+          </div>
         )}
       </div>
 

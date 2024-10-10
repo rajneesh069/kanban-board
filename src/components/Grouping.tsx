@@ -16,6 +16,7 @@ export default function Grouping({
 }) {
   return (
     <>
+      {/* Grouping By Status*/}
       {grouping === "status" && (
         <div className="group-container">
           {status.map((el, idx) => (
@@ -69,7 +70,7 @@ export default function Grouping({
                     (ticket, idx) =>
                       el === ticket.status && (
                         <Card
-                          isUser={true}
+                          isUser={false}
                           key={idx}
                           id={ticket.id}
                           title={ticket.title}
@@ -87,6 +88,7 @@ export default function Grouping({
         </div>
       )}
 
+      {/* Grouping By Priority*/}
       {grouping === "priority" && (
         <div className="group-container">
           {Object.keys(priority).map((key, idx) => (
@@ -143,6 +145,7 @@ export default function Grouping({
                     (ticket, idx) =>
                       priority[key as Key] === ticket.priority && (
                         <Card
+                          isUser={false}
                           key={idx}
                           id={ticket.id}
                           title={ticket.title}
@@ -160,6 +163,7 @@ export default function Grouping({
         </div>
       )}
 
+      {/* Grouping By User */}
       {grouping === "user" && (
         <div className="group-container">
           {data?.users.map((user, idx) => (
@@ -183,12 +187,29 @@ export default function Grouping({
                       alignItems: "center",
                     }}
                   >
-                    <img
-                      style={{ borderRadius: "50%" }}
-                      height={30}
-                      width={25}
-                      src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=50&h=50"
-                    />
+                    {/* User Profile Photo with available status */}
+                    <div style={{ position: "relative" }}>
+                      <img
+                        src={`${
+                          (user.available as boolean)
+                            ? `./assets/circle-16.ico`
+                            : `./assets/circle-128.ico`
+                        }`}
+                        height={10}
+                        width={10}
+                        style={{
+                          position: "absolute",
+                          zIndex: 20,
+                          bottom: 4,
+                          right: 0,
+                        }}
+                      />
+                      <img
+                        style={{ borderRadius: "50%" }}
+                        src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=50&h=50"
+                      />
+                    </div>
+
                     <p
                       style={{
                         fontFamily: "sans-serif",
@@ -203,6 +224,7 @@ export default function Grouping({
                       )}
                     </p>
                   </div>
+
                   <div
                     style={{ display: "flex", flexDirection: "row", gap: 4 }}
                   >
@@ -218,6 +240,7 @@ export default function Grouping({
                     (ticket, idx) =>
                       user.id === ticket.userId && (
                         <Card
+                          isUser={true}
                           key={idx}
                           id={ticket.id}
                           title={ticket.title}
