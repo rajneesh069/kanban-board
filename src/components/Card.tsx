@@ -1,5 +1,6 @@
 import Priority from "./Priority";
 import Tag from "./Tag";
+import "../styles/Card.css";
 
 export interface CardProps {
   id: string;
@@ -12,18 +13,7 @@ export interface CardProps {
 
 export default function Card({ id, title, tag, priority, status }: CardProps) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 1,
-        border: "1.5px solid #eee",
-        borderRadius: "10px",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        maxWidth: "300px",
-        padding: 5,
-      }}
-    >
+    <div className="card-container">
       <div
         style={{
           display: "flex",

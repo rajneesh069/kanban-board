@@ -1,0 +1,23 @@
+.group-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .group-container {
+    flex-direction: column;
+  }
+}
+
+.group-element {
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .group-element {
+    border-bottom: 2px solid black;
+  }
+}

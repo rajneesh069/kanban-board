@@ -21,7 +21,6 @@ export default function Landing() {
       style={{
         height: "92vh",
         display: "flex",
-        flexDirection: "row",
         backgroundColor: "#F7FCFC",
       }}
     >

@@ -1,6 +1,7 @@
 import { priority, status } from "../constants/utils";
 import { Data } from "../store/DataContext";
 import Card from "./Card";
+import "../styles/Grouping.css";
 
 type Key = "No priority" | "Low" | "Medium" | "High" | "Urgent";
 
@@ -16,19 +17,10 @@ export default function Grouping({
   return (
     <>
       {grouping === "status" && (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            width: "100vw",
-          }}
-        >
+        <div className="group-container">
           {status.map((el, idx) => (
-            <div key={idx} style={{ minWidth: "200px" }}>
-              <section
-                style={{ display: "flex", flexDirection: "column", gap: 8 }}
-              >
+            <div key={idx} className="group-element">
+              <section style={{ display: "flex", flexDirection: "column" }}>
                 <div
                   style={{
                     display: "flex",
@@ -45,7 +37,7 @@ export default function Grouping({
                   >
                     <p style={{ fontSize: 17, fontFamily: "sans-serif" }}>
                       {el}
-                    </p>{" "}
+                    </p>
                     <p
                       style={{
                         fontSize: 17,
@@ -70,20 +62,22 @@ export default function Grouping({
                     />
                   </div>
                 </div>
-                {orderedData(ordering, data)?.map(
-                  (ticket, idx) =>
-                    el === ticket.status && (
-                      <Card
-                        key={idx}
-                        id={ticket.id}
-                        title={ticket.title}
-                        priority={ticket.priority}
-                        status={ticket.status}
-                        tag={ticket.tag}
-                        userId={ticket.userId}
-                      />
-                    )
-                )}
+                <div>
+                  {orderedData(ordering, data)?.map(
+                    (ticket, idx) =>
+                      el === ticket.status && (
+                        <Card
+                          key={idx}
+                          id={ticket.id}
+                          title={ticket.title}
+                          priority={ticket.priority}
+                          status={ticket.status}
+                          tag={ticket.tag}
+                          userId={ticket.userId}
+                        />
+                      )
+                  )}
+                </div>
               </section>
             </div>
           ))}
@@ -91,16 +85,9 @@ export default function Grouping({
       )}
 
       {grouping === "priority" && (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            width: "100vw",
-          }}
-        >
+        <div className="group-container">
           {Object.keys(priority).map((key, idx) => (
-            <div key={idx} style={{ minWidth: "200px" }}>
+            <div key={idx} className="group-element">
               <section
                 style={{ display: "flex", flexDirection: "column", gap: 8 }}
               >
@@ -138,20 +125,22 @@ export default function Grouping({
                     />
                   </div>
                 </div>
-                {orderedData(ordering, data)?.map(
-                  (ticket, idx) =>
-                    priority[key as Key] === ticket.priority && (
-                      <Card
-                        key={idx}
-                        id={ticket.id}
-                        title={ticket.title}
-                        priority={ticket.priority}
-                        status={ticket.status}
-                        tag={ticket.tag}
-                        userId={ticket.userId}
-                      />
-                    )
-                )}
+                <div>
+                  {orderedData(ordering, data)?.map(
+                    (ticket, idx) =>
+                      priority[key as Key] === ticket.priority && (
+                        <Card
+                          key={idx}
+                          id={ticket.id}
+                          title={ticket.title}
+                          priority={ticket.priority}
+                          status={ticket.status}
+                          tag={ticket.tag}
+                          userId={ticket.userId}
+                        />
+                      )
+                  )}
+                </div>
               </section>
             </div>
           ))}
@@ -159,14 +148,7 @@ export default function Grouping({
       )}
 
       {grouping === "user" && (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            width: "100vw",
-          }}
-        >
+        <div className="group-container">
           {data?.users.map((user, idx) => (
             <div key={idx} style={{ maxWidth: "280px" }}>
               <section
@@ -204,20 +186,22 @@ export default function Grouping({
                     />
                   </div>
                 </div>
-                {orderedData(ordering, data)?.map(
-                  (ticket, idx) =>
-                    user.id === ticket.userId && (
-                      <Card
-                        key={idx}
-                        id={ticket.id}
-                        title={ticket.title}
-                        priority={ticket.priority}
-                        status={ticket.status}
-                        tag={ticket.tag}
-                        userId={ticket.userId}
-                      />
-                    )
-                )}
+                <div>
+                  {orderedData(ordering, data)?.map(
+                    (ticket, idx) =>
+                      user.id === ticket.userId && (
+                        <Card
+                          key={idx}
+                          id={ticket.id}
+                          title={ticket.title}
+                          priority={ticket.priority}
+                          status={ticket.status}
+                          tag={ticket.tag}
+                          userId={ticket.userId}
+                        />
+                      )
+                  )}
+                </div>
               </section>
             </div>
           ))}
