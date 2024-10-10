@@ -107,14 +107,50 @@ export default function Grouping({
       )}
 
       {grouping === "user" && (
-        <>
-          <section style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <h4></h4>
-          </section>
-          <section></section>
-          <section></section>
-          <section></section>
-        </>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            width: "100vw",
+          }}
+        >
+          {data?.users.map((user, idx) => (
+            <div key={idx}>
+              <section
+                style={{ display: "flex", flexDirection: "column", gap: 8 }}
+              >
+                <p
+                  style={{
+                    fontFamily: "sans-serif",
+                    fontSize: 17,
+                  }}
+                >
+                  {user.name}{" "}
+                  {data?.tickets.reduce(
+                    (acc, ticket) =>
+                      ticket.userId === user.id ? acc + 1 : acc,
+                    0
+                  )}
+                </p>
+                {data?.tickets.map(
+                  (ticket, idx) =>
+                    user.id === ticket.userId && (
+                      <Card
+                        key={idx}
+                        id={ticket.id}
+                        title={ticket.title}
+                        priority={ticket.priority}
+                        status={ticket.status}
+                        tag={ticket.tag}
+                        userId={ticket.userId}
+                      />
+                    )
+                )}
+              </section>
+            </div>
+          ))}
+        </div>
       )}
     </>
   );

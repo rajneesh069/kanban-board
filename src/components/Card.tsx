@@ -20,7 +20,7 @@ export default function Card({ id, title, tag, priority }: CardProps) {
         border: "2px solid #eee",
         borderRadius: "8px",
         boxShadow: "inherit",
-        maxWidth: "320px",
+        maxWidth: "300px",
         padding: 6,
       }}
     >
