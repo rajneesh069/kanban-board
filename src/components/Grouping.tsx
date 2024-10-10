@@ -35,6 +35,7 @@ export default function Grouping({
                       gap: 7,
                     }}
                   >
+                    <img src={`./assets/${el}.svg`} />
                     <p style={{ fontSize: 17, fontFamily: "sans-serif" }}>
                       {el}
                     </p>
@@ -62,11 +63,13 @@ export default function Grouping({
                     />
                   </div>
                 </div>
+
                 <div>
                   {orderedData(ordering, data)?.map(
                     (ticket, idx) =>
                       el === ticket.status && (
                         <Card
+                          isUser={true}
                           key={idx}
                           id={ticket.id}
                           title={ticket.title}
@@ -99,22 +102,32 @@ export default function Grouping({
                     alignItems: "center",
                   }}
                 >
-                  <p
-                    style={{
-                      fontFamily: "sans-serif",
-                      fontSize: 17,
-                    }}
+                  <div
+                    style={{ display: "flex", flexDirection: "row", gap: 4 }}
                   >
-                    {key}{" "}
-                    {data?.tickets.reduce(
-                      (acc, ticket) =>
-                        ticket.priority === priority[key as Key]
-                          ? acc + 1
-                          : acc,
-                      0
-                    )}
-                  </p>
-
+                    <img
+                      src={`./assets/${
+                        priority[key as Key] === 4
+                          ? "Urgent-Coloured"
+                          : priority[key as Key]
+                      }.svg`}
+                    />
+                    <p
+                      style={{
+                        fontFamily: "sans-serif",
+                        fontSize: 17,
+                      }}
+                    >
+                      {key}{" "}
+                      {data?.tickets.reduce(
+                        (acc, ticket) =>
+                          ticket.priority === priority[key as Key]
+                            ? acc + 1
+                            : acc,
+                        0
+                      )}
+                    </p>
+                  </div>
                   <div
                     style={{ display: "flex", flexDirection: "row", gap: 4 }}
                   >
@@ -150,7 +163,7 @@ export default function Grouping({
       {grouping === "user" && (
         <div className="group-container">
           {data?.users.map((user, idx) => (
-            <div key={idx} style={{ maxWidth: "280px" }}>
+            <div key={idx} className="group-element">
               <section
                 style={{ display: "flex", flexDirection: "column", gap: 8 }}
               >
@@ -162,20 +175,34 @@ export default function Grouping({
                     alignItems: "center",
                   }}
                 >
-                  <p
+                  <div
                     style={{
-                      fontFamily: "sans-serif",
-                      fontSize: 17,
+                      display: "flex",
+                      flexDirection: "row",
+                      gap: 4,
+                      alignItems: "center",
                     }}
                   >
-                    {user.name}{" "}
-                    {data?.tickets.reduce(
-                      (acc, ticket) =>
-                        ticket.userId === user.id ? acc + 1 : acc,
-                      0
-                    )}
-                  </p>
-
+                    <img
+                      style={{ borderRadius: "50%" }}
+                      height={30}
+                      width={25}
+                      src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=50&h=50"
+                    />
+                    <p
+                      style={{
+                        fontFamily: "sans-serif",
+                        fontSize: 17,
+                      }}
+                    >
+                      {user.name}{" "}
+                      {data?.tickets.reduce(
+                        (acc, ticket) =>
+                          ticket.userId === user.id ? acc + 1 : acc,
+                        0
+                      )}
+                    </p>
+                  </div>
                   <div
                     style={{ display: "flex", flexDirection: "row", gap: 4 }}
                   >

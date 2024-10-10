@@ -2,7 +2,7 @@ import Priority from "./Priority";
 import Tag from "./Tag";
 import "../styles/Card.css";
 
-export interface CardProps {
+export interface DataProps {
   id: string;
   title: string;
   tag: string[];
@@ -11,7 +11,16 @@ export interface CardProps {
   priority: 0 | 1 | 2 | 3 | 4;
 }
 
-export default function Card({ id, title, tag, priority, status }: CardProps) {
+type CardProps = { isUser?: boolean } & DataProps;
+
+export default function Card({
+  id,
+  title,
+  tag,
+  priority,
+  status,
+  isUser,
+}: CardProps) {
   return (
     <div className="card-container">
       <div
@@ -22,10 +31,12 @@ export default function Card({ id, title, tag, priority, status }: CardProps) {
         }}
       >
         <p style={{ color: "gray" }}>{id}</p>
-        <img
-          style={{ borderRadius: "50%" }}
-          src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=50&h=50"
-        />
+        {isUser && (
+          <img
+            style={{ borderRadius: "50%" }}
+            src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=50&h=50"
+          />
+        )}
       </div>
 
       <div

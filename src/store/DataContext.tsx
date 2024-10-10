@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-import { CardProps } from "../components/Card";
+import { DataProps } from "../components/Card";
 
 export interface Data {
-  tickets: CardProps[];
+  tickets: DataProps[];
   users: { id: string; name: string; available: boolean }[];
 }
 

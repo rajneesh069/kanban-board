@@ -5,8 +5,8 @@ import { DisplayProvider } from "./store/DisplayContext";
 
 export default function App() {
   return (
-    <DisplayProvider>
-      <DataProvider>
+    <DataProvider>
+      <DisplayProvider>
         <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
           <nav>
             <NavBar />
@@ -15,7 +15,7 @@ export default function App() {
             <Landing />
           </section>
         </div>
-      </DataProvider>
-    </DisplayProvider>
+      </DisplayProvider>
+    </DataProvider>
   );
 }
