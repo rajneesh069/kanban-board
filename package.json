@@ -3,6 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "email": "rajneesh.mishra9616@gmail.com",
+    "name": "Rajneesh Mishra"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

@@ -17,21 +17,28 @@ export default function Card({ id, title, tag, priority }: CardProps) {
         display: "flex",
         flexDirection: "column",
         gap: 2,
-        border: "2px solid #eee",
-        borderRadius: "8px",
-        boxShadow: "inherit",
+        border: "1.5px solid #eee",
+        borderRadius: "10px",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         maxWidth: "300px",
         padding: 6,
       }}
     >
       <div style={{ display: "flex", flexDirection: "row" }}>
-        <p>{id}</p>
+        <p style={{ color: "gray" }}>{id}</p>
         <img src="" />
       </div>
 
       <p style={{ fontFamily: "sans-serif" }}>{title}</p>
 
-      <div style={{ display: "flex", flexDirection: "row", gap: 1 }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 5,
+          alignItems: "center",
+        }}
+      >
         <div>
           <Priority priority={priority} />
         </div>

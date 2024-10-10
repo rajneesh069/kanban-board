@@ -25,22 +25,41 @@ export default function Grouping({
           }}
         >
           {status.map((el, idx) => (
-            <div key={idx}>
+            <div key={idx} style={{ minWidth: "200px" }}>
               <section
                 style={{ display: "flex", flexDirection: "column", gap: 8 }}
               >
-                <p
+                <div
                   style={{
-                    fontFamily: "sans-serif",
-                    fontSize: 17,
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
                   }}
                 >
-                  {el}{" "}
-                  {data?.tickets.reduce(
-                    (acc, ticket) => (ticket.status === el ? acc + 1 : acc),
-                    0
-                  )}
-                </p>
+                  <p
+                    style={{
+                      fontFamily: "sans-serif",
+                      fontSize: 17,
+                    }}
+                  >
+                    {el}{" "}
+                    {data?.tickets.reduce(
+                      (acc, ticket) => (ticket.status === el ? acc + 1 : acc),
+                      0
+                    )}
+                  </p>
+
+                  <div
+                    style={{ display: "flex", flexDirection: "row", gap: 4 }}
+                  >
+                    <img src="./assets/add.svg" style={{ cursor: "pointer" }} />
+                    <img
+                      src="./assets/3 dot menu.svg"
+                      style={{ cursor: "pointer" }}
+                    />
+                  </div>
+                </div>
                 {orderedData(ordering, data)?.map(
                   (ticket, idx) =>
                     el === ticket.status && (
@@ -71,23 +90,44 @@ export default function Grouping({
           }}
         >
           {Object.keys(priority).map((key, idx) => (
-            <div key={idx}>
+            <div key={idx} style={{ minWidth: "200px" }}>
               <section
                 style={{ display: "flex", flexDirection: "column", gap: 8 }}
               >
-                <p
+                <div
                   style={{
-                    fontFamily: "sans-serif",
-                    fontSize: 17,
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
                   }}
                 >
-                  {key}{" "}
-                  {data?.tickets.reduce(
-                    (acc, ticket) =>
-                      ticket.priority === priority[key as Key] ? acc + 1 : acc,
-                    0
-                  )}
-                </p>
+                  <p
+                    style={{
+                      fontFamily: "sans-serif",
+                      fontSize: 17,
+                    }}
+                  >
+                    {key}{" "}
+                    {data?.tickets.reduce(
+                      (acc, ticket) =>
+                        ticket.priority === priority[key as Key]
+                          ? acc + 1
+                          : acc,
+                      0
+                    )}
+                  </p>
+
+                  <div
+                    style={{ display: "flex", flexDirection: "row", gap: 4 }}
+                  >
+                    <img src="./assets/add.svg" style={{ cursor: "pointer" }} />
+                    <img
+                      src="./assets/3 dot menu.svg"
+                      style={{ cursor: "pointer" }}
+                    />
+                  </div>
+                </div>
                 {orderedData(ordering, data)?.map(
                   (ticket, idx) =>
                     priority[key as Key] === ticket.priority && (
@@ -118,23 +158,42 @@ export default function Grouping({
           }}
         >
           {data?.users.map((user, idx) => (
-            <div key={idx}>
+            <div key={idx} style={{ maxWidth: "280px" }}>
               <section
                 style={{ display: "flex", flexDirection: "column", gap: 8 }}
               >
-                <p
+                <div
                   style={{
-                    fontFamily: "sans-serif",
-                    fontSize: 17,
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
                   }}
                 >
-                  {user.name}{" "}
-                  {data?.tickets.reduce(
-                    (acc, ticket) =>
-                      ticket.userId === user.id ? acc + 1 : acc,
-                    0
-                  )}
-                </p>
+                  <p
+                    style={{
+                      fontFamily: "sans-serif",
+                      fontSize: 17,
+                    }}
+                  >
+                    {user.name}{" "}
+                    {data?.tickets.reduce(
+                      (acc, ticket) =>
+                        ticket.userId === user.id ? acc + 1 : acc,
+                      0
+                    )}
+                  </p>
+
+                  <div
+                    style={{ display: "flex", flexDirection: "row", gap: 4 }}
+                  >
+                    <img src="./assets/add.svg" style={{ cursor: "pointer" }} />
+                    <img
+                      src="./assets/3 dot menu.svg"
+                      style={{ cursor: "pointer" }}
+                    />
+                  </div>
+                </div>
                 {orderedData(ordering, data)?.map(
                   (ticket, idx) =>
                     user.id === ticket.userId && (

@@ -22,9 +22,10 @@ export default function Landing() {
         height: "92vh",
         display: "flex",
         flexDirection: "row",
+        backgroundColor: "#F7FCFC",
       }}
     >
-      <Grouping grouping={grouping} data={data} ordering={ordering}/>
+      <Grouping grouping={grouping} data={data} ordering={ordering} />
     </div>
   );
 }
