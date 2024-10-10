@@ -37,18 +37,28 @@ export default function Grouping({
                     alignItems: "center",
                   }}
                 >
-                  <p
+                  <div
                     style={{
-                      fontFamily: "sans-serif",
-                      fontSize: 17,
+                      display: "flex",
+                      gap: 7,
                     }}
                   >
-                    {el}{" "}
-                    {data?.tickets.reduce(
-                      (acc, ticket) => (ticket.status === el ? acc + 1 : acc),
-                      0
-                    )}
-                  </p>
+                    <p style={{ fontSize: 17, fontFamily: "sans-serif" }}>
+                      {el}
+                    </p>{" "}
+                    <p
+                      style={{
+                        fontSize: 17,
+                        fontFamily: "sans-serif",
+                        color: "gray",
+                      }}
+                    >
+                      {data?.tickets.reduce(
+                        (acc, ticket) => (ticket.status === el ? acc + 1 : acc),
+                        0
+                      )}
+                    </p>
+                  </div>
 
                   <div
                     style={{ display: "flex", flexDirection: "row", gap: 4 }}

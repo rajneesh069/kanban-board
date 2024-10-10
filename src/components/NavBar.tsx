@@ -66,7 +66,7 @@ export default function NavBar() {
                 justifyContent: "space-around",
               }}
             >
-              <label htmlFor="grouping" style={{ color: "#ccc" }}>
+              <label htmlFor="grouping" style={{ color: "gray" }}>
                 Grouping
               </label>
               <select
@@ -91,7 +91,7 @@ export default function NavBar() {
                 justifyContent: "space-around",
               }}
             >
-              <label htmlFor="ordering" style={{ color: "#ccc" }}>
+              <label htmlFor="ordering" style={{ color: "gray" }}>
                 Ordering
               </label>
               <select

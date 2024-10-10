@@ -10,27 +10,44 @@ export interface CardProps {
   priority: 0 | 1 | 2 | 3 | 4;
 }
 
-export default function Card({ id, title, tag, priority }: CardProps) {
+export default function Card({ id, title, tag, priority, status }: CardProps) {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: 2,
+        gap: 1,
         border: "1.5px solid #eee",
         borderRadius: "10px",
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         maxWidth: "300px",
-        padding: 6,
+        padding: 5,
       }}
     >
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
         <p style={{ color: "gray" }}>{id}</p>
-        <img src="" />
+        <img
+          style={{ borderRadius: "50%" }}
+          src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=50&h=50"
+        />
       </div>
 
-      <p style={{ fontFamily: "sans-serif" }}>{title}</p>
-
+      <div
+        style={{
+          display: "flex",
+          gap: 8,
+          alignItems: "baseline",
+        }}
+      >
+        <img src={`./assets/${status}.svg`} />
+        <p style={{ fontFamily: "sans-serif" }}>{title}</p>
+      </div>
       <div
         style={{
           display: "flex",
