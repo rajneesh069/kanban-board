@@ -1,6 +1,9 @@
 import { createContext, useEffect, useState } from "react";
 import { DataProps } from "../components/Card";
 
+/* Data has not been saved in localStorage because it's coming from API and localStorage has a size 
+limit of 5 MB so if the data would be large it won't be feasible. */
+
 export interface Data {
   tickets: DataProps[];
   users: { id: string; name: string; available: boolean }[];
