@@ -7,9 +7,11 @@ type Key = "No priority" | "Low" | "Medium" | "High" | "Urgent";
 export default function Grouping({
   grouping,
   data,
+  ordering,
 }: {
   grouping: "status" | "priority" | "user";
   data: Data | undefined;
+  ordering: "title" | "priority";
 }) {
   return (
     <>
@@ -39,7 +41,7 @@ export default function Grouping({
                     0
                   )}
                 </p>
-                {data?.tickets.map(
+                {orderedData(ordering, data)?.map(
                   (ticket, idx) =>
                     el === ticket.status && (
                       <Card
@@ -86,7 +88,7 @@ export default function Grouping({
                     0
                   )}
                 </p>
-                {data?.tickets.map(
+                {orderedData(ordering, data)?.map(
                   (ticket, idx) =>
                     priority[key as Key] === ticket.priority && (
                       <Card
@@ -133,7 +135,7 @@ export default function Grouping({
                     0
                   )}
                 </p>
-                {data?.tickets.map(
+                {orderedData(ordering, data)?.map(
                   (ticket, idx) =>
                     user.id === ticket.userId && (
                       <Card
@@ -154,4 +156,11 @@ export default function Grouping({
       )}
     </>
   );
+}
+
+function orderedData(ordering: "priority" | "title", data: Data | undefined) {
+  if (ordering === "title") {
+    return data?.tickets.sort((a, b) => a.title.localeCompare(b.title));
+  }
+  return data?.tickets.sort((a, b) => b.priority - a.priority);
 }

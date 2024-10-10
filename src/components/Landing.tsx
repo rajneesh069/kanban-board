@@ -4,7 +4,7 @@ import Grouping from "./Grouping";
 
 export default function Landing() {
   const { data, isLoading, error } = useData();
-  const { grouping } = useDisplay();
+  const { grouping, ordering } = useDisplay();
 
   console.log("data:", data);
 
@@ -24,7 +24,7 @@ export default function Landing() {
         flexDirection: "row",
       }}
     >
-      <Grouping grouping={grouping} data={data} />
+      <Grouping grouping={grouping} data={data} ordering={ordering}/>
     </div>
   );
 }
