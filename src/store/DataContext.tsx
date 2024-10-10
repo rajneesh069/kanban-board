@@ -9,6 +9,7 @@ interface Data {
 interface DataContext {
   data: Data | undefined;
   isLoading: boolean;
+  error: string | null;
 }
 
 export const DataContext = createContext<DataContext | undefined>(undefined);
@@ -20,6 +21,7 @@ export default function DataProvider({
 }) {
   const [data, setData] = useState<Data | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     (async function () {
@@ -31,24 +33,26 @@ export default function DataProvider({
           const data = await response.json();
           if (data) {
             setData(data);
-            setIsLoading(false);
+            setError(null);
           }
         } else {
           setData(undefined);
-          setIsLoading(false);
+          setError("No data sent from the server.");
         }
       } catch (error) {
         console.error(error);
         setData(undefined);
+        if (error instanceof Error) setError(error.message);
+        else if (typeof error === "string") setError(error);
+      } finally {
         setIsLoading(false);
       }
     })();
   }, []);
 
   return (
-    <DataContext.Provider value={{ data, isLoading }}>
+    <DataContext.Provider value={{ data, isLoading, error }}>
       {children}
     </DataContext.Provider>
   );
 }
-

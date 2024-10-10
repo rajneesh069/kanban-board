@@ -1,3 +1,6 @@
+import Priority from "./Priority";
+import Tag from "./Tag";
+
 export interface CardProps {
   id: string;
   title: string;
@@ -11,8 +14,6 @@ export default function Card({
   id,
   title,
   tag,
-  userId,
-  status,
   priority,
 }: CardProps) {
   return (
@@ -26,13 +27,20 @@ export default function Card({
         boxShadow: "inherit",
       }}
     >
-      <p>{id}</p>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <p>{id}</p>
+        <img src="" />
+      </div>
       <h4>{title}</h4>
       <div style={{ display: "flex", flexDirection: "row", gap: 1 }}>
-        <Priority priority={priority} />
-        {tag.map((el, idx) => (
-          <Tag tag={el} key={idx} />
-        ))}
+        <div>
+          <Priority priority={priority} />
+        </div>
+        <div>
+          {tag.map((el, idx) => (
+            <Tag tag={el} key={idx} />
+          ))}
+        </div>
       </div>
     </div>
   );
