@@ -35,9 +35,9 @@ export default function NavBar() {
             setIsOpen(!isOpen);
           }}
         >
-          <img src="src/assets/Display.svg" />
+          <img src="./assets/Display.svg" />
           <p>Display</p>
-          <img src="src/assets/down.svg" />
+          <img src="./assets/down.svg" />
         </button>
 
         {isOpen && (
